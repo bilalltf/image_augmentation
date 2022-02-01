@@ -1,0 +1,4 @@
+os-sys==2.1.4
+opencv-python==4.5.5.62
+albumentations==1.1.0
+argparse==1.4.0
