@@ -19,7 +19,7 @@ def augment(trainning_folder, transforms_folder):
                     image = cv2.imread(im_path)
                     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
-                    # Transform image with the augmentation pipelines we have imported
+                    # Transform image with the augmentation pipelines we will import
                     i=0
                     for trans_file in os.listdir(transforms_folder):
                         i+=1
@@ -33,18 +33,20 @@ def augment(trainning_folder, transforms_folder):
 
 
 if __name__ == '__main__':
+    directory = os.getcwd()
+    print(os.path.join(directory, "dataset\\trainning_set"))
     parser = argparse.ArgumentParser(description="Runnnig...")
     parser.add_argument(
         "--trainning-folder", 
         "-I",
-        default="", 
+        default=directory+ "/dataset/training_set", 
         help="Enter trainning images folder path"
     )
     parser.add_argument(
         "--transforms-folder", 
         "-T",
-        default="", 
-        help="Enter transformers folder path"
+        default=directory+ "/transforms", 
+        help="Enter transforms folder path"
     )
     args = parser.parse_args()
     augment(args.trainning_folder, args.transforms_folder)
